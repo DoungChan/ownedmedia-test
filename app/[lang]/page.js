@@ -3,7 +3,7 @@ import InputSearch from "@/components/Input";
 import TypingAnimation from "@/components/magicui/typing-animation";
 import { getDictionary } from "./dictionaries";
 import Categories from "@/components/Categories";
-import BodyCard from "@/components/bodyCard";
+import BodyCard from "@/components/BodyCard";
 import FloatButton from "@/components/FloatButoon";
 import { Languages } from "lucide-react";
 export default async function Home({ params: { lang } }) {
