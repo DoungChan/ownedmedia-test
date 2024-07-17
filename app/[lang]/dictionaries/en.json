@@ -1,0 +1,14 @@
+{
+    "title":" Owned Media",
+    "menu": {
+        "day": "Day",
+        "week": "Week",
+        "month": "Month",
+        "year": "Year",
+        "top": "Top",
+        "trending": "Trending",
+        "meme": "Meme",
+        "coding": "Coding"
+
+    }
+}
