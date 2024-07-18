@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import TypingAnimation from "./TypingAnimation";
 import { Skeleton } from "./ui/skeleton";
-
+import { useParams } from "next/navigation";
 const Summarize = ({ contentUrl }) => {
    const [data, setData] = useState("");
-   const [lang, setLang] = useState("english");
    const [loading, setLoading] = useState(false);
    const [openDialog, setOpenDialog] = useState(false);
-
+   const param = useParams();
    // animation
    // const handleAnimation = () => {
    //    const end = Date.now() + 3 * 1000; // 3 seconds
@@ -44,7 +43,7 @@ const Summarize = ({ contentUrl }) => {
       setLoading(true);
       // handleAnimation();
       fetch(
-         `${process.env.NEXT_PUBLIC_API_URL}/media/dev_to/summary?article_url=${contentUrl}&lan=${lang}`,
+         `${process.env.NEXT_PUBLIC_API_URL}/media/dev_to/summary?article_url=${contentUrl}&lan=${param.lang}`,
          {
             method: "GET",
 
