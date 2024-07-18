@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import TypingAnimation from "./TypingAnimation";
@@ -9,6 +9,7 @@ const Summarize = ({ contentUrl }) => {
    const [lang, setLang] = useState("english");
    const [loading, setLoading] = useState(false);
    const [openDialog, setOpenDialog] = useState(false);
+
    // animation
    // const handleAnimation = () => {
    //    const end = Date.now() + 3 * 1000; // 3 seconds
@@ -43,7 +44,7 @@ const Summarize = ({ contentUrl }) => {
       setLoading(true);
       // handleAnimation();
       fetch(
-         `${process.env.NEXT_PUBLIC_API_URL}/media/dev_to/summary?article_url=${contentUrl.contentUrl}&lan=${lang}`,
+         `${process.env.NEXT_PUBLIC_API_URL}/media/dev_to/summary?article_url=${contentUrl}&lan=${lang}`,
          {
             method: "GET",
 
