@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Tag } from "lucide-react";
 import { useHandlePushQuery } from "@/hooks/handlePushQuery";
 import { Skeleton } from "./ui/skeleton";
-import { handleScrollToBodyElement } from "@/hooks/handleScrollToBodyElement";
 const Categories = ({ lang }) => {
    const [active, setActive] = useState("");
    const [filterTag, setFilterTag] = useState([]);
@@ -49,8 +48,7 @@ const Categories = ({ lang }) => {
       const param = new URLSearchParams(searchParams);
       param.delete("page");
       param.set("keyword", keyword);
-      router.push(`?${param.toString()}`);
-      handleScrollToBodyElement();
+      router.replace(`?${param.toString()}`);
       setActive(keyword);
    };
 
