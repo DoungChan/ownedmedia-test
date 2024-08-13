@@ -1,15 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-   images: {
-      remotePatterns: [
-         {
-            protocol: "https",
-            hostname: "dev-to-uploads.s3.amazonaws.com",
-            port: "",
-            pathname: "/**",
-         },
-      ],
-   },
-};
+const nextConfig = {};
 
-    export default nextConfig;
+export default nextConfig;

@@ -1,49 +1,41 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import confetti from "canvas-confetti";
 import TypingAnimation from "./TypingAnimation";
 import { Skeleton } from "./ui/skeleton";
-import { useParams } from "next/navigation";
-const Summarize = ({ contentUrl }) => {
+import { useParams, useSearchParams } from "next/navigation";
+import { Volume2, VolumeX } from "lucide-react";
+const Summarize = ({ contentUrl , lang}) => {
    const [data, setData] = useState("");
    const [loading, setLoading] = useState(false);
-   const [openDialog, setOpenDialog] = useState(false);
+   const [isSpeaking, setIsSpeaking] = useState(false);
    const param = useParams();
-   // animation
-   // const handleAnimation = () => {
-   //    const end = Date.now() + 3 * 1000; // 3 seconds
-   //    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+   const searchParams = useSearchParams();
+   const msg = new SpeechSynthesisUtterance();
+   const speechHandler = (msg) => {
+      msg.text = data.summary;
+      msg.onend = () => {
+         setIsSpeaking(false);
+      };
+      window.speechSynthesis.speak(msg);
+   };
+   const query = new URLSearchParams(searchParams);
 
-   //    const frame = () => {
-   //       if (Date.now() > end) return;
-
-   //       confetti({
-   //          particleCount: 2,
-   //          angle: 60,
-   //          spread: 55,
-   //          startVelocity: 60,
-   //          origin: { x: 0, y: 0.5 },
-   //          colors: colors,
-   //       });
-   //       confetti({
-   //          particleCount: 2,
-   //          angle: 120,
-   //          spread: 55,
-   //          startVelocity: 60,
-   //          origin: { x: 1, y: 0.5 },
-   //          colors: colors,
-   //       });
-
-   //       requestAnimationFrame(frame);
-   //    };
-
-   //    frame();
-   // };
+   const handleSpeaking = (msg) => {
+      if (isSpeaking) {
+         window.speechSynthesis.cancel();
+      } else {
+         speechHandler(msg);
+      }
+   };
    useEffect(() => {
       setLoading(true);
       // handleAnimation();
       fetch(
-         `${process.env.NEXT_PUBLIC_API_URL}/media/dev_to/summary?article_url=${contentUrl}&lan=${param.lang}`,
+         `${
+            process.env.NEXT_PUBLIC_API_URL
+         }/media/summary?article_url=${contentUrl}&lan=${
+            param.lang
+         }&media=${query.get("tag")}`,
          {
             method: "GET",
 
@@ -58,7 +50,6 @@ const Summarize = ({ contentUrl }) => {
             setLoading(false);
          })
          .catch((err) => {
-            setOpenDialog(true);
             setLoading(false);
          });
    }, []);
@@ -80,9 +71,26 @@ const Summarize = ({ contentUrl }) => {
          ) : data ? (
             <>
                <TypingAnimation text={data.summary} />
+               {/* <div className="flex justify-end">
+                  <div
+                     className="cursor-pointer p-2 rounded-lg bg-blue-500 border border-blue-500 w-fit"
+                     onClick={() => {
+                        setIsSpeaking(!isSpeaking);
+                        handleSpeaking(msg);
+                     }}
+                  >
+                     {isSpeaking ? (
+                        <Volume2 className="text-white" size={14} />
+                     ) : (
+                        <VolumeX className="text-white" size={14} />
+                     )}
+                  </div>
+               </div> */}
             </>
          ) : (
-            <> Token Expired</>
+            <> {
+               lang === "en" ? "Expired Token" : "期限切れのトークン"
+            }</>
          )}
       </div>
    );

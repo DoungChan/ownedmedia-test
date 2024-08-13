@@ -19,7 +19,7 @@ export function middleware(request) {
    const locale = getLocale(request);
    request.nextUrl.pathname = `/${locale}${pathname}`;
    // Add the query parameter
-   searchParams.set("filter", "day");
+   searchParams.set("tag", "dev_to");
    return NextResponse.redirect(request.nextUrl);
 }
 

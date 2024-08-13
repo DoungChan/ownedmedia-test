@@ -5,61 +5,46 @@ import { getDictionary } from "./dictionaries";
 import Categories from "@/components/Categories";
 import BodyCard from "@/components/BodyCard";
 import FloatButton from "@/components/FloatButoon";
-import { Languages } from "lucide-react";
+import { ArrowUpFromLine, Languages } from "lucide-react";
+import { FadeText } from "@/components/magicui/fade-text";
+import Cover from "@/components/Cover";
+import Navbar from "@/components/Navbar";
 export default async function Home({ params: { lang } }) {
    const dict = await getDictionary(lang);
-
-   const categories = [
-      {
-         title: dict.menu.day,
-         key: `day`,
-      },
-      {
-         title: dict.menu.week,
-         key: `week`,
-      },
-      {
-         title: dict.menu.month,
-         key: `month`,
-      },
-      {
-         title: dict.menu.year,
-         key: `year`,
-      },
-      {
-         title: dict.menu.trending,
-         key: `trending`,
-      },
-      {
-         title: dict.menu.meme,
-         key: `meme`,
-      },
-      {
-         title: dict.menu.coding,
-         key: `coding`,
-      },
-      {
-         title: dict.menu.top,
-         key: `top`,
-      },
-   ];
    return (
       <>
-         <main className="flex min-w-screen min-h-screen flex-col items-center justify-between px-24 py-10">
-            <div className="w-full flex flex-col items-center">
-               <div className="my-10">
-                  <TypingAnimation
-                     className="text-4xl font-bold text-black dark:text-white"
-                     text={dict.title}
-                  />
+         <main className="flex min-h-screen flex-col items-center justify-center overflow-hidden  px-24">
+            <Navbar />
+            <div className="w-full flex flex-col items-center relative">
+               <div className="absolute">
+                  <Cover />
                </div>
-               <InputSearch />
-               <Categories categories={categories} />
+               <div className="flex flex-col gap-8 w-screen h-screen   items-center justify-center relative p-2">
+                  <div className=" md:w-[40%] w-[70%] text-center flex flex-col gap-2">
+                     <FadeText
+                        className="w-[70%] md:text-5xl text-3xl font-bold text-white "
+                        direction="up"
+                        framerProps={{
+                           show: { transition: { duration: 0.5, delay: 0.5 } },
+                        }}
+                        text={dict.title}
+                     />
+
+                     <FadeText
+                        className="text-secondary text-opacity-50 sm:text-sm text-xs w-full !text-center mt-4 "
+                        direction="up"
+                        framerProps={{
+                           show: { transition: { duration: 0.5, delay: 0.7 } },
+                        }}
+                        text={dict.des}
+                     />
+                  </div>
+                  <InputSearch placeholderText={dict.placeholder} lang={lang} />
+                  <Categories lang={lang} />
+               </div>
             </div>
-            <BodyCard />
-            <FloatButton/>
-             
-         
+            <BodyCard lang={lang} />
+            <FloatButton icon={<ArrowUpFromLine />} />
          </main>
       </>
    );

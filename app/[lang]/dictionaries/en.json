@@ -1,5 +1,6 @@
 {
-    "title":" Owned Media",
+    "title":"Discover the Latest Insights",
+    "des":"Dive into our curated collection of articles on design, development, and innovation. Stay ahead with trending topics and expert advice.",
     "menu": {
         "day": "Day",
         "week": "Week",
@@ -10,5 +11,6 @@
         "meme": "Meme",
         "coding": "Coding"
 
-    }
+    },
+    "placeholder":"Search"
 }

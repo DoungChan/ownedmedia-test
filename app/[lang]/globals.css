@@ -109,3 +109,13 @@
       @apply bg-gray-100 p-4  rounded-md my-4  overflow-auto;
    }
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+   display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+   -ms-overflow-style: none;  /* IE and Edge */
+   scrollbar-width: none;  /* Firefox */
+}
