@@ -4,5 +4,5 @@ export const handleScrollToBodyElement = () => {
         if (element) {
            element.scrollIntoView({ behavior: "smooth" });
         }
-     }, 300);
+     }, 500);
 };
