@@ -58,42 +58,48 @@ const BodyCard = ({ lang }) => {
 
    return (
       <>
-         {" "}
-         <div
-            id="body-content"
-            className="flex items-stretch flex-wrap justify-center w-full gap-2 max-w-screen-2xl pt-12"
-         >
-            {loading
-               ? Array.from({ length: 12 }).map((_, index) => (
-                    <SkeletonCard key={index} />
-                 ))
-               : data &&
-                 data.content.map((item, index) => (
-                    <div className="flex" key={index}>
-                       <Card data={item} summary={handleSummary} />
-                    </div>
-                 ))}
-         </div>
-         <div className="my-10">
-            <Pagination totalItems={data?.total_items ?? data?.total_content} />
-         </div>
-         <Dialog
-            open={openDialog}
-            onOpenChange={() => setOpenDialog(!openDialog)}
-         >
-            <DialogContent className="sm:min-w-[60%] min-w-[90%]">
-               <DialogHeader>
-                  <DialogTitle>
-                     {lang === "en" ? "Summary" : "まとめ"}
-                  </DialogTitle>
-               </DialogHeader>
-               <DialogDescription>
-                  <div className=" w-full max-h-[500px] sm:max-h-96 overflow-auto">
-                     <Summarize contentUrl={contentUrl} lang={lang} />
-                  </div>
-               </DialogDescription>
-            </DialogContent>
-         </Dialog>
+         {data && (
+            <>
+               {" "}
+               <div
+                  id="body-content"
+                  className="flex items-stretch flex-wrap justify-center w-full gap-2 max-w-screen-2xl pt-12"
+               >
+                  {loading
+                     ? Array.from({ length: 12 }).map((_, index) => (
+                          <SkeletonCard key={index} />
+                       ))
+                     : data &&
+                       data.content.map((item, index) => (
+                          <div className="flex" key={index}>
+                             <Card data={item} summary={handleSummary} />
+                          </div>
+                       ))}
+               </div>
+               <div className="my-10">
+                  <Pagination
+                     totalItems={data?.total_items ?? data?.total_content}
+                  />
+               </div>
+               <Dialog
+                  open={openDialog}
+                  onOpenChange={() => setOpenDialog(!openDialog)}
+               >
+                  <DialogContent className="sm:min-w-[60%] min-w-[90%]">
+                     <DialogHeader>
+                        <DialogTitle>
+                           {lang === "en" ? "Summary" : "まとめ"}
+                        </DialogTitle>
+                     </DialogHeader>
+                     <DialogDescription>
+                        <div className=" w-full max-h-[500px] sm:max-h-96 overflow-auto">
+                           <Summarize contentUrl={contentUrl} lang={lang} />
+                        </div>
+                     </DialogDescription>
+                  </DialogContent>
+               </Dialog>
+            </>
+         )}
       </>
    );
 };
