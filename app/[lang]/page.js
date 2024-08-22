@@ -1,20 +1,25 @@
 "use server";
-import InputSearch from "@/components/Input";
-import TypingAnimation from "@/components/magicui/typing-animation";
+
 import { getDictionary } from "./dictionaries";
 import Categories from "@/components/Categories";
 import BodyCard from "@/components/BodyCard";
 import FloatButton from "@/components/FloatButoon";
-import { ArrowUpFromLine, Languages } from "lucide-react";
+import { ArrowUpFromLine } from "lucide-react";
 import { FadeText } from "@/components/magicui/fade-text";
 import Cover from "@/components/Cover";
-import Navbar from "@/components/Navbar";
+
 export default async function Home({ params: { lang } }) {
    const dict = await getDictionary(lang);
+   
+   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/website`, {
+      method: "GET",
+      headers: { "X-API-Key": process.env.NEXT_PUBLIC_API_KEY },
+   });
+   const websites = await res.json();
+
    return (
       <>
          <main className="flex min-h-screen flex-col items-center justify-center overflow-hidden  px-24">
-            <Navbar />
             <div className="w-full flex flex-col items-center relative">
                <div className="absolute">
                   <Cover />
@@ -39,8 +44,7 @@ export default async function Home({ params: { lang } }) {
                         text={dict.des}
                      />
                   </div>
-                  <InputSearch placeholderText={dict.placeholder} lang={lang} />
-                  <Categories lang={lang} />
+                  <Categories lang={lang} data={websites} />
                </div>
             </div>
             <BodyCard lang={lang} />

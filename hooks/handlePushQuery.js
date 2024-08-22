@@ -1,14 +1,12 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export const useHandlePushQuery = () => {
    const router = useRouter();
-   const searchParams = useSearchParams();
 
    const handlePushQuery = (key, query) => {
-      const params = new URLSearchParams(searchParams);
+      const params = new URLSearchParams();
       params.set(key, query);
-      router.replace(`?${params.toString()}`, { shallow: true });
-
+      router.replace(`?${params.toString()}`);
    };
 
    return handlePushQuery;

@@ -8,7 +8,7 @@ function getLocale(request) {
 }
 
 export function middleware(request) {
-   const { pathname, searchParams } = request.nextUrl;
+   const { pathname } = request.nextUrl;
    const pathnameHasLocale = locales.some(
       (locale) =>
          pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -19,7 +19,6 @@ export function middleware(request) {
    const locale = getLocale(request);
    request.nextUrl.pathname = `/${locale}${pathname}`;
    // Add the query parameter
-   searchParams.set("tag", "dev_to");
    return NextResponse.redirect(request.nextUrl);
 }
 
