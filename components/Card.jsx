@@ -4,9 +4,12 @@ import { BookOpenCheck, ExternalLink } from "lucide-react";
 import { formatDate } from "../utils/formatDate";
 import { formatDateFromText } from "@/utils/formatDateFromText";
 import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 const Card = ({ summary, data }) => {
+   const { lang } = useParams();
    const handleClick = (modifiedUrl) => {
       summary(modifiedUrl);
+      
    };
 
    return (
@@ -14,7 +17,7 @@ const Card = ({ summary, data }) => {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="w-80 h-full flex-1">
+      className="w-60 sm:w-80 h-full flex-1">
          <div className="group flex flex-col rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 border-gray-50 shadow-lg h-full">
             <div className="relative w-full h-fit  p-2">
                <div className="w-full h-40 bg-primary flex justify-center items-center text-white rounded-lg mt-2">
@@ -23,17 +26,17 @@ const Card = ({ summary, data }) => {
                <span className="absolute z-10 -bottom-8 left-1/2 transform -translate-x-1/2">
                   <img
                      className="articleCover size-14 rounded-full object-cover"
-                     src={data?.by_author.profile ?? data?.image}
+                     src={ data?.image}
                      alt="author profile"
                   />
                   <p className="font-bold text-center leading-none text-xs -mt-3 text-wrap line-clamp-1">
-                     {data?.by_author?.name ?? data?.by_author}
+                     { data?.by_author}
                   </p>
                </span>
             </div>
             <div className="mt-6 px-2 flex flex-col justify-between flex-1">
                <h2 className={`mb-3 text-xl font-semibold line-clamp-2`}>
-                  {data?.title}
+                  {lang === 'en'? data?.title_en : data?.title_ja}
                </h2>
                <div className="flex justify-between p-2  gap-4">
                   <p className=" flex items-center text-xs ">
@@ -53,7 +56,7 @@ const Card = ({ summary, data }) => {
                      
                   </div>
                   <button
-                     onClick={() => handleClick(data.url)}
+                     onClick={() => handleClick(lang === 'en'? data?.summary_en : data?.summary_ja)}
                      className="text-xs text-white p-2 bg-primary rounded-lg "
                   >
                      <BookOpenCheck size={16} />
