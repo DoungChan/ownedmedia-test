@@ -17,7 +17,7 @@ export function middleware(request) {
    if (pathnameHasLocale) return;
 
    const locale = getLocale(request);
-   request.nextUrl.pathname = `/${locale}${pathname}`;
+   request.nextUrl.pathname = `/${locale}${pathname}/all`;
    // Add the query parameter
    return NextResponse.redirect(request.nextUrl);
 }

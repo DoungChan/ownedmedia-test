@@ -2,23 +2,47 @@ import React from "react";
 
 const SkeletonCard = () => {
    return (
-      <div className="w-60 sm:w-80 h-full">
-         <div className="group flex flex-col rounded-lg border border-transparent transition-colors hover:border-gray-300 hover:bg-gray-100 border-gray-50 shadow-lg h-full">
-            <div className="relative w-full h-fit p-2">
-               <div className="rounded-lg bg-gray-200 w-full h-40 animate-pulse"></div>
-               <span className="absolute z-10 -bottom-6 left-1/2 transform -translate-x-1/2">
-                  <div className="font-bold text-center leading-none text-xs mt-3 bg-gray-200 w-24 h-4 animate-pulse "></div>
-               </span>
-            </div>
-            <div className="mt-10 px-2 flex flex-col justify-between flex-1">
-               <div className="mb-3 text-xl font-semibold line-clamp-2 bg-gray-200 h-8 animate-pulse"></div>
-               <div className="flex justify-between p-2 gap-4">
-                  <div className="flex items-center text-xs bg-gray-200 w-20 h-4 animate-pulse"></div>
-                  <div className="h-full bg-gray-200 w-full rounded-xl text-xs flex items-center justify-center animate-pulse">
-                     <div className="text-white text-opacity-80 bg-gray-200 w-24 h-4"></div>
+      <div
+         initial={{ opacity: 0, y: 100 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.3 }}
+         className="w-[400px] md:w-[700px] h-full flex-1"
+      >
+         <div
+            className="p-2 flex justify-between items-center gap-4
+                      
+                        rounded-lg border border-transparent  
+                        transition-colors hover:bg-slate-100 border-gray-50 shadow-sm h-full
+                        cursor-pointer
+                     "
+         >
+            <div className="flex flex-col">
+               <div className="flex items-center justify-center gap-2 w-fit h-fit">
+                  <div className="articleCover size-12 rounded-full bg-gray-300"></div>
+                  <div className="flex flex-col gap-2">
+                     <div className="h-4 bg-gray-300 rounded w-24"></div>
+                     <div className="h-4 bg-gray-300 rounded w-16"></div>
                   </div>
-                  <button className="text-xs text-white p-2 bg-gray-200 rounded-lg bg-opacity-70 animate-pulse w-10 h-10"></button>
                </div>
+               <div className="flex flex-col justify-between gap-2">
+                  <div className="h-6 bg-gray-300 rounded w-48"></div>
+                  <div className="h-4 bg-gray-300 rounded w-full mt-2 mb-1"></div>
+                  <div className="flex gap-2">
+                     {[...Array(3)].map((_, index) => (
+                        <div
+                           key={index}
+                           className="text-primary text-sm py-0 px-4 rounded-full bg-gray-300 w-16 h-6"
+                        ></div>
+                     ))}
+                  </div>
+                  <div className="flex gap-2 mt-2">
+                     <div className="text-xs text-white p-2 bg-gray-300 rounded-lg w-8 h-8"></div>
+                     <div className="text-xs text-white p-2 bg-gray-300 rounded-lg w-8 h-8"></div>
+                  </div>
+               </div>
+            </div>
+            <div>
+               <div className="object-cover min-w-24 min-h-24 size-24 rounded-xl bg-gray-300"></div>
             </div>
          </div>
       </div>

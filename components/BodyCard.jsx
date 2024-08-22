@@ -58,11 +58,11 @@ const BodyCard = ({ search }) => {
       <>
          <div
             id="body-content"
-            className="flex items-stretch flex-wrap justify-center w-full gap-2 max-w-screen-2xl"
+            className="flex items-stretch flex-col justify-center w-full gap-2 max-w-screen-md py-4"
          >
             {data &&
                data.medias.map((item, index) => (
-                  <div className="flex" key={index}>
+                  <div key={index}>
                      <Card data={item} summary={handleSummary} />
                   </div>
                ))}
@@ -93,9 +93,9 @@ const BodyCard = ({ search }) => {
             >
                {/* <Pagination totalItems={data?.total_items ?? data?.total_content} /> */}
                <h6
-                  className="px-4 py-2 cursor-pointer
+                  className="px-6 py-2 cursor-pointer
             bg-primary hover:bg-transparent border border-primary duration-300
-            rounded-lg 
+            rounded-full 
             text-white hover:text-primary "
                >
                   {lang === "en" ? "Load more" : "もっと読む"}
