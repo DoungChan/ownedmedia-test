@@ -47,7 +47,6 @@ export default async function Home({ params: { lang } }) {
                   <Categories lang={lang} data={websites} />
                </div>
             </div>
-            <BodyCard lang={lang} />
             <FloatButton icon={<ArrowUpFromLine />} />
          </main>
       </>
