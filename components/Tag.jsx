@@ -48,14 +48,14 @@ const Tag = () => {
             {data?.tags.map((item, index) => (
                <button
                   key={index}
-                  className={`text-primary text-sm py-1 px-4 rounded-full line-clamp-1 ${
+                  className={`text-primary text-sm py-1 px-4 rounded-full text-start line-clamp-1 ${
                      item.name === tag
                         ? "bg-primary text-white"
                         : "bg-secondary "
                   }`}
                   onClick={() => handleClickTag(item.name)}
                >
-                 # {lang === "en" ? item.value_en : item.value_ja}
+                  # {lang === "en" ? item.value_en : item.value_ja}
                </button>
             ))}
             {loading &&

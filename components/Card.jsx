@@ -23,15 +23,18 @@ const Card = ({ summary, data }) => {
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
          className="w-full h-full flex-1"
+         onClick={() =>
+            handleClick(lang === "en" ? data?.summary_en : data?.summary_ja)
+         }
       >
          <div
             className="p-2 flex justify-between items-center gap-2
-          rounded-lg border border-transparent  
-          transition-colors hover:bg-slate-100  shadow-sm h-full
-          cursor-pointer
+                     rounded-lg border border-transparent  
+                     transition-colors hover:bg-slate-100  shadow-sm h-full
+                     cursor-pointer
           "
          >
-            <div className=" flex flex-col w-[70%]">
+            <div className=" flex flex-col w-[300px] sm:w-[400px] md:w-[500px] lg:w-[700px] max-w-[700px]">
                <div className="flex items-center justify-center gap-2 w-fit -my-4 h-fit">
                   <img
                      className="articleCover size-12 rounded-full object-cover"
@@ -44,7 +47,6 @@ const Card = ({ summary, data }) => {
                      </p>
                      <p className=" flex items-center text-xs ">
                         {data?.media}
-                           
                      </p>
                   </div>
                </div>
