@@ -18,7 +18,11 @@ const BodyCard = ({ search }) => {
    const [loading, setLoading] = useState(false);
    const { lang } = useParams();
    const [openDialog, setOpenDialog] = useState(false);
-   const [contentUrl, setContentUrl] = useState("");
+   const [contentUrl, setContentUrl] = useState({
+      title: "",
+      url: "",
+      content: "",
+   });
    const { website } = useParams();
    const [limit, setLimit] = useState(PAGINATION_ITEMS_PER_PAGE);
    const [loadMore, setLoadMore] = useState(true);
@@ -49,8 +53,14 @@ const BodyCard = ({ search }) => {
    }, [limit, searchKeyWord, tag]);
 
    // handle summary
-   const handleSummary = (url) => {
-      setContentUrl(url);
+   const handleSummary = (summarize, title, url) => {
+      setContentUrl({
+         title: title,
+         url: url,
+         content: summarize,
+      });
+      console.log(contentUrl, "contentUrl");
+      
       setOpenDialog(true);
    };
 

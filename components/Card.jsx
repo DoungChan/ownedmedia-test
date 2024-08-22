@@ -9,10 +9,11 @@ import { useHandlePushQuery } from "@/hooks/handlePushQuery";
 const Card = ({ summary, data }) => {
    const { lang } = useParams();
    const pushQuery = useHandlePushQuery();
-   const handleClick = (modifiedUrl) => {
-      summary(modifiedUrl);
+   const handleClick = (summarize, title, url) => {
+      summary(summarize, title, url);
+      console.log(summarize, title, url, "summarize, title, url");
+      
    };
-   console.log(data);
 
    const handleClickTag = (tag) => {
       pushQuery("tag", tag);
@@ -24,7 +25,11 @@ const Card = ({ summary, data }) => {
          transition={{ duration: 0.3 }}
          className="w-full h-full flex-1"
          onClick={() =>
-            handleClick(lang === "en" ? data?.summary_en : data?.summary_ja)
+            handleClick(
+               lang === "en" ? data?.summary_en : data?.summary_ja,
+               lang === "en" ? data?.title_en : data?.title_ja,
+               data.base_url + data?.url
+            )
          }
       >
          <div
@@ -64,7 +69,7 @@ const Card = ({ summary, data }) => {
                            className={`text-primary text-sm py-0 px-4 rounded-full line-clamp-1 bg-secondary`}
                            onClick={() => handleClickTag(item)}
                         >
-                           # {item}
+                           #{item}
                         </button>
                      ))}
                   </div>

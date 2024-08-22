@@ -55,7 +55,7 @@ const Tag = () => {
                   }`}
                   onClick={() => handleClickTag(item.name)}
                >
-                  # {lang === "en" ? item.value_en : item.value_ja}
+                  #{lang === "en" ? item.value_en : item.value_ja}
                </button>
             ))}
             {loading &&
