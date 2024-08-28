@@ -9,6 +9,15 @@ function getLocale(request) {
 
 export function middleware(request) {
    const { pathname } = request.nextUrl;
+
+   // Check if the pathname matches exactly with a locale
+   const exactLocaleMatch = locales.some((locale) => pathname === `/${locale}`);
+
+   if (exactLocaleMatch) {
+      request.nextUrl.pathname = `${pathname}/all`;
+      return NextResponse.redirect(request.nextUrl);
+   }
+
    const pathnameHasLocale = locales.some(
       (locale) =>
          pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
