@@ -26,7 +26,7 @@ const Tag = () => {
 
    //remove query
    const handleClick = () => {
-      pushQuery("tag", "");
+      pushQuery("tag", "all");
    };
    // handle load more
    const handleLoadMore = () => {
