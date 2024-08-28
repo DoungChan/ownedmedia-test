@@ -4,6 +4,8 @@ import WebsiteButton from "@/components/WebsiteButton";
 import Menubar from "@/components/Menubar";
 import BodyCard from "@/components/BodyCard";
 import { Separator } from "@radix-ui/react-dropdown-menu";
+import FloatButton from "@/components/FloatButoon";
+import { ArrowUpFromLine } from "lucide-react";
 
 const Website = async () => {
    return (
@@ -20,6 +22,7 @@ const Website = async () => {
                </div>
             </div>
          </div>
+         <FloatButton icon={<ArrowUpFromLine />}/>
       </div>
    );
 };

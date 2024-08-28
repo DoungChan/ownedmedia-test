@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { BookOpenCheck, ExternalLink } from "lucide-react";
 import { formatDate } from "../utils/formatDate";
 import { formatDateFromText } from "@/utils/formatDateFromText";
 import { motion } from "framer-motion";
@@ -12,9 +11,7 @@ const Card = ({ summary, data }) => {
    const handleClick = (summarize, title, url) => {
       summary(summarize, title, url);
       console.log(summarize, title, url, "summarize, title, url");
-      
    };
-
    const handleClickTag = (tag) => {
       pushQuery("tag", tag);
    };
@@ -23,7 +20,7 @@ const Card = ({ summary, data }) => {
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="w-full h-full flex-1"
+         className="h-full flex-1 w-[400px] md:w-[600px] "
          onClick={() =>
             handleClick(
                lang === "en" ? data?.summary_en : data?.summary_ja,
@@ -34,12 +31,12 @@ const Card = ({ summary, data }) => {
       >
          <div
             className="p-2 flex justify-between items-center gap-2
-                     rounded-lg border border-transparent  
-                     transition-colors hover:bg-slate-100  shadow-sm h-full
-                     cursor-pointer
+          rounded-lg border border-transparent  
+          transition-colors hover:bg-slate-100  shadow-sm h-full
+          cursor-pointer
           "
          >
-            <div className=" flex flex-col w-[300px] sm:w-[400px] md:w-[500px] lg:w-[700px] max-w-[700px]">
+            <div className=" flex flex-col w-[70%]">
                <div className="flex items-center justify-center gap-2 w-fit -my-4 h-fit">
                   <img
                      className="articleCover size-12 rounded-full object-cover"
@@ -66,7 +63,7 @@ const Card = ({ summary, data }) => {
                      {data?.tags.slice(0, 3).map((item, index) => (
                         <button
                            key={index}
-                           className={`text-primary text-sm py-0 px-4 rounded-full line-clamp-1 bg-secondary`}
+                           className={`text-primary text-sm py-0 px-4 rounded-full line-clamp-1 bg-secondary opacity-60`}
                            onClick={() => handleClickTag(item)}
                         >
                            #{item}

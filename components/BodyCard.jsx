@@ -18,7 +18,7 @@ const BodyCard = ({ search }) => {
    const [loading, setLoading] = useState(false);
    const { lang } = useParams();
    const [openDialog, setOpenDialog] = useState(false);
-   const [contentUrl, setContentUrl] = useState({
+     const [contentUrl, setContentUrl] = useState({
       title: "",
       url: "",
       content: "",
@@ -60,7 +60,7 @@ const BodyCard = ({ search }) => {
          content: summarize,
       });
       console.log(contentUrl, "contentUrl");
-      
+
       setOpenDialog(true);
    };
 

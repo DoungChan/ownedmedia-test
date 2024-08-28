@@ -2,7 +2,6 @@
 import React from "react";
 import TypingAnimation from "./TypingAnimation";
 import { ExternalLink } from "lucide-react";
-
 const Summarize = ({ summary }) => {
    const handleOpenLink = (url) => () => {
       window.open(url, "_blank");

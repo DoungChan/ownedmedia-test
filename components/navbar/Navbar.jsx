@@ -39,7 +39,7 @@ const Navbar = () => {
 
             <Language
                langText={lang === "en" ? "Japanese" : "英語"}
-               className="block md:hidden"
+               className="flex md:hidden"
             />
          </div>
 
