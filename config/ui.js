@@ -1,1 +1,1 @@
-export const PAGINATION_ITEMS_PER_PAGE  = 12;
+export const PAGINATION_ITEMS_PER_PAGE = 5;
