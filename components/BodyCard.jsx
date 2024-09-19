@@ -9,16 +9,18 @@ import {
    DialogHeader,
    DialogTitle,
    DialogDescription,
+   DialogFooter,
 } from "@/components/ui/dialog";
 import { PAGINATION_ITEMS_PER_PAGE } from "@/config/ui";
 import { useParams, useSearchParams } from "next/navigation";
 import { fecthContent } from "@/service/action";
+import { ExternalLink } from "lucide-react";
 const BodyCard = ({ search }) => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(false);
    const { lang } = useParams();
    const [openDialog, setOpenDialog] = useState(false);
-     const [contentUrl, setContentUrl] = useState({
+   const [contentUrl, setContentUrl] = useState({
       title: "",
       url: "",
       content: "",
@@ -64,6 +66,9 @@ const BodyCard = ({ search }) => {
       setOpenDialog(true);
    };
 
+   const handleOpenLink = (url) => () => {
+      window.open(url, "_blank");
+   };
    return (
       <>
          <div
@@ -85,7 +90,7 @@ const BodyCard = ({ search }) => {
                   )
                )}
             {data?.medias.length === 0 && (
-               <div className="flex items-center justify-center w-full h-96 m-auto">
+               <div className="flex items-center justify-center w-full min-w-[668px] h-96 m-auto">
                   <h6 className="text-primary ">
                      {lang === "en"
                         ? "No content found"
@@ -117,10 +122,10 @@ const BodyCard = ({ search }) => {
             open={openDialog}
             onOpenChange={() => setOpenDialog(!openDialog)}
          >
-            <DialogContent className="sm:min-w-[60%] min-w-[90%]">
+            <DialogContent className="sm:min-w-[60%] min-w-[90%] ">
                <DialogHeader>
                   <DialogTitle>
-                     {lang === "en" ? "Summary" : "まとめ"}
+                     {contentUrl ? contentUrl.title : "Summary"}
                   </DialogTitle>
                </DialogHeader>
                <DialogDescription>
@@ -128,6 +133,16 @@ const BodyCard = ({ search }) => {
                      <Summarize summary={contentUrl} lang={lang} />
                   </div>
                </DialogDescription>
+               <DialogFooter>
+                  <div className="w-full flex justify-center">
+                     <div
+                        className=" bg-primary p-2 px-10 rounded-full text-white border border-primary duration-300 cursor-pointer hover:bg-transparent hover:text-primary"
+                        onClick={handleOpenLink(contentUrl.url)}
+                     >
+                        <ExternalLink className="size-5" />
+                     </div>
+                  </div>
+               </DialogFooter>
             </DialogContent>
          </Dialog>
       </>
