@@ -125,7 +125,11 @@ const BodyCard = ({ search }) => {
             <DialogContent className="sm:min-w-[60%] min-w-[90%] ">
                <DialogHeader>
                   <DialogTitle>
-                     {contentUrl ? contentUrl.title : "Summary"}
+                     <div className="w-[70%] ">
+                        <h1 className="text-primary text-xl font-semibold">
+                           {contentUrl ? contentUrl.title : "Summary"}
+                        </h1>
+                     </div>
                   </DialogTitle>
                </DialogHeader>
                <DialogDescription>
