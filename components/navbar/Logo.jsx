@@ -1,16 +1,21 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-const Logo = ({ logoText, lang, className }) => {
-  const router = useRouter();
-  return (
-    <div
-      className={`w-fit  p-2 cursor-pointer text-blue-500 ${className}`}
-      onClick={() => router.push(`/${lang}`)}
-    >
-      <h1 className="text-sm sm:text-xl w-fit text-nowrap">{logoText}</h1>
-    </div>
-  );
+const Logo = ({ lang, className }) => {
+   const router = useRouter();
+   return (
+      <div
+         className={` cursor-pointer ${className}`}
+         onClick={() => router.push(`/${lang}`)}
+      >
+         <img src="/logo1.png" alt="logo" className="size-14 -my-2 md:hidden" />
+         <img
+            src="/logo.png"
+            alt="logo"
+            className="min-w-32 max-w-40 -my-10  hidden md:block"
+         />
+      </div>
+   );
 };
 
 export default Logo;

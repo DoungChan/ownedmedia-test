@@ -96,7 +96,7 @@ const Language = ({ className }) => {
             <div>
                <Sheet open={openSheet} onOpenChange={setOpenSheet}>
                   <SheetTrigger className="">
-                     <div className="p-2.5 border rounded-lg">
+                     <div className="p-2.5 border rounded-lg sm:hidden">
                         <Tags className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all text-black bg-transparent" />
                         <span className="sr-only">Toggle Tags</span>
                      </div>
@@ -116,7 +116,9 @@ const Language = ({ className }) => {
                                     className="rounded-lg md:w-auto focus:outline-none p-1 flex-1 items-center justify-center text-black text-sm ml-2"
                                     type="text"
                                     onChange={handleInputChange}
-                                    placeholder={lang === "en" ? "Search" : "検索"}
+                                    placeholder={
+                                       lang === "en" ? "Search" : "検索"
+                                    }
                                  />
                                  {input && (
                                     <div className="w-fit h-9 flex justify-center items-center mx-3  ">
@@ -138,7 +140,11 @@ const Language = ({ className }) => {
                               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 h-full w-full md:w-[50%] m-auto overflow-auto mb-4">
                                  {loading ? (
                                     <div className="absolute md:w-1/2 w-full flex justify-center">
-                                       <p className="text-black">{lang === 'en' ? 'loading...' : '読み込み中...'}</p>
+                                       <p className="text-black">
+                                          {lang === "en"
+                                             ? "loading..."
+                                             : "読み込み中..."}
+                                       </p>
                                     </div>
                                  ) : (
                                     <>

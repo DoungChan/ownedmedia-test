@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
    Pagination,
    PaginationContent,
@@ -16,7 +16,7 @@ const PaginationCustome = ({ totalItems }) => {
    const itemsPerPage = PAGINATION_ITEMS_PER_PAGE;
    const pushQuery = useHandlePushQuery();
    const totalPages = Math.floor(totalItems / itemsPerPage);
-   
+
    const handlePageChange = (page) => {
       pushQuery("page", page);
       if (page >= 1 && page <= totalPages) {

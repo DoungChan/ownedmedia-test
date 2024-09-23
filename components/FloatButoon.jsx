@@ -28,7 +28,7 @@ const FloatButton = ({ icon }) => {
                initial={{ opacity: 0, y: 100 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.1 }}
-               className="fixed bottom-4 right-4 rounded-md duration-300 bg-primary text-white"
+               className="fixed bottom-4 right-4 rounded-md duration-300 bg-primary text-white border border-white"
                onClick={handleScrollUp}
             >
                {" "}

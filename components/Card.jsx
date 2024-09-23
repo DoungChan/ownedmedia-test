@@ -5,6 +5,7 @@ import { formatDateFromText } from "@/utils/formatDateFromText";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { useHandlePushQuery } from "@/hooks/handlePushQuery";
+import Markdown from "markdown-to-jsx";
 const Card = ({ summary, data }) => {
    const { lang } = useParams();
    const pushQuery = useHandlePushQuery();
@@ -20,7 +21,7 @@ const Card = ({ summary, data }) => {
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="h-full flex-1 w-[400px] md:w-[600px] "
+         className="h-full flex-1 w-96 sm:min-w-[600px] max-w-[600px] "
          onClick={() =>
             handleClick(
                lang === "en" ? data?.summary_en : data?.summary_ja,
@@ -56,9 +57,9 @@ const Card = ({ summary, data }) => {
                   <h2 className={`text-xl font-semibold line-clamp-2`}>
                      {lang === "en" ? data?.title_en : data?.title_ja}
                   </h2>
-                  <p className="line-clamp-3 -mt-4 -mb-1">
+                  <Markdown className="line-clamp-3 -mt-4 -mb-1">
                      {lang === "en" ? data?.summary_en : data?.summary_ja}
-                  </p>
+                  </Markdown>
                   <div className="flex gap-2">
                      {data?.tags.slice(0, 3).map((item, index) => (
                         <button

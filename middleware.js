@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server";
 
-let locales = ["en", "ja"];
-
-function getLocale(request) {
-   const preferredLocale = request.headers.get("Accept-Language");
-   return locales.find((locale) => preferredLocale.includes(locale));
-}
-
+let locales = ["ja", "en"];
+const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(request) {
    const { pathname } = request.nextUrl;
 
-   // Check if the pathname matches exactly with a locale
    const exactLocaleMatch = locales.some((locale) => pathname === `/${locale}`);
 
    if (exactLocaleMatch) {
@@ -23,9 +17,16 @@ export function middleware(request) {
          pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
    );
 
+   if (
+      request.nextUrl.pathname.startsWith("/_next") ||
+      request.nextUrl.pathname.includes("/api/") ||
+      PUBLIC_FILE.test(request.nextUrl.pathname)
+   ) {
+      return;
+   }
    if (pathnameHasLocale) return;
 
-   const locale = getLocale(request);
+   const locale = "ja";
    request.nextUrl.pathname = `/${locale}${pathname}/all`;
    // Add the query parameter
    return NextResponse.redirect(request.nextUrl);
