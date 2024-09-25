@@ -13,7 +13,7 @@ const Footer = () => {
                   <h1 className="text-2xl text-white">Teccadoor</h1>
                   <p className="text-white">
                      {lang === "en"
-                        ? "  © 2024 - Teccadoor Powered by Kirirom Digital."
+                        ? " A door to undiscovered technical information for Japanese developers."
                         : " 日本人のための知られざる技術情報への扉開発者。"}
                   </p>
                </div>

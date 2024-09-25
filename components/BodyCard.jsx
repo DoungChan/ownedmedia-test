@@ -64,10 +64,10 @@ const BodyCard = () => {
    };
 
    return (
-      <div className="mt-40 px-2">
+      <div className="mt-48 px-2">
          {data?.total_count > 0 && (
             <div>
-               <h5 className="text-primary">
+               <h5 className="text-gray-500 text-xs font-semibold">
                   Total articals: {data?.total_count}
                </h5>
             </div>

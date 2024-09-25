@@ -11,7 +11,7 @@ const Navbar = () => {
 
    return (
       <nav className="fixed bg-white top-0 w-screen z-20 shadow-sm">
-         <div className="flex flex-col md:flex-row justify-between items-start md:px-32 p-2 w-full text-white">
+         <div className="flex flex-col md:flex-row justify-between items-start lg:px-20 sm:px-4 p-2 w-full text-white">
             <Logo
                logoText={lang === "en" ? "Owned Media" : "オウンドメディア"}
                lang={lang}
