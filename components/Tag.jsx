@@ -33,7 +33,7 @@ const Tag = () => {
                     "
       >
          <div
-            className="flex justify-start items-start gap-0
+            className="flex justify-start items-start gap-1
                     sm:min-w-36 min-w-20 max-w-[90%] overflow-auto
                    m-auto scrollbar-hide "
          >
