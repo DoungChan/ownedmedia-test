@@ -64,7 +64,7 @@ const BodyCard = () => {
    };
 
    return (
-      <div className="mt-36 px-2">
+      <div className="mt-40 px-2">
          {data?.total_count > 0 && (
             <div>
                <h5 className="text-primary">
@@ -75,7 +75,7 @@ const BodyCard = () => {
 
          <div
             id="body-content"
-            className=" flex items-stretch flex-wrap justify-start gap-4  py-4 mt-4  min-h-[calc(100vh-12rem)]"
+            className=" grid grid-cols-1 md:grid-cols-2  py-4 mt-4  min-h-[calc(100vh-12rem)]"
          >
             {data &&
                data.medias.map((item, index) => (
@@ -101,7 +101,7 @@ const BodyCard = () => {
                </div>
             )}
          </div>
-         {data?.total_count > 0 && (
+         {data?.total_count > 20 && (
             <>
                {" "}
                {loadMore ? (

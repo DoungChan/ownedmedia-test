@@ -21,7 +21,7 @@ const Card = ({ summary, data }) => {
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="h-full flex-1 w-screen justify-start items-start  min-w-[200px] sm:min-w-[500px] max-w-[600px] "
+         className="h-full flex-1 w-screen justify-start items-start  min-w-[200px] sm:min-w-[400px] max-w-[600px] "
          onClick={() =>
             handleClick(
                lang === "en" ? data?.summary_en : data?.summary_ja,
