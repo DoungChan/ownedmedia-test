@@ -75,7 +75,7 @@ const BodyCard = () => {
 
          <div
             id="body-content"
-            className=" grid grid-cols-1 md:grid-cols-2  py-4 mt-4  min-h-[calc(100vh-12rem)]"
+            className=" grid grid-cols-1 lg:grid-cols-2  gap-4 py-4 mt-4  min-h-[calc(100vh-12rem)]"
          >
             {data &&
                data.medias.map((item, index) => (
