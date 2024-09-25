@@ -11,17 +11,17 @@ const Card = ({ summary, data }) => {
    const pushQuery = useHandlePushQuery();
    const handleClick = (summarize, title, url) => {
       summary(summarize, title, url);
-      console.log(summarize, title, url, "summarize, title, url");
    };
    const handleClickTag = (tag) => {
       pushQuery("tag", tag);
    };
+
    return (
       <motion.div
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="h-full flex-1 w-96 sm:min-w-[600px] max-w-[600px] "
+         className="h-full flex-1 w-screen  min-w-[200px] sm:min-w-[500px] max-w-[600px] "
          onClick={() =>
             handleClick(
                lang === "en" ? data?.summary_en : data?.summary_ja,
@@ -33,15 +33,19 @@ const Card = ({ summary, data }) => {
          <div
             className="p-2 flex justify-between items-center gap-2
           rounded-lg border border-transparent  
-          transition-colors hover:bg-slate-100  shadow-sm h-full
+          transition-colors hover:bg-slate-100  shadow-sm h-full 
           cursor-pointer
           "
          >
-            <div className=" flex flex-col w-[70%]">
+            <div className=" flex flex-col sm:w-[80%]">
                <div className="flex items-center justify-center gap-2 w-fit -my-4 h-fit">
                   <img
                      className="articleCover size-12 rounded-full object-cover"
-                     src={data?.image}
+                     src={
+                        data?.media !== "dev_to"
+                           ? data?.image
+                           : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                     }
                      alt="author profile"
                   />
                   <div className="flex flex-col gap-2">
@@ -80,13 +84,6 @@ const Card = ({ summary, data }) => {
                      </p>
                   </div>
                </div>
-            </div>
-            <div className="max-w-[30%] flex justify-end items-end ">
-               <img
-                  src={data?.image}
-                  alt=""
-                  className="object-cover min-w-20 min-h-20  md:min-w-24 md:min-h-24 size-20 rounded-xl"
-               />
             </div>
          </div>
       </motion.div>

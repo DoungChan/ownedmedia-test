@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
-import { icons } from "lucide-react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,7 +13,7 @@ export default function RootLayout({ params: { lang, website }, children }) {
    return (
       <html lang="ja">
          <head>
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/logo1.png" />
          </head>
 
          <body className={inter.className}>

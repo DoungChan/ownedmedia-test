@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { debounce } from "lodash"; // Import lodash debounce function
 import { Separator } from "./ui/separator";
 
-const InputSearch = ({ placeholderText, lang }) => {
+const InputSearch = ({ placeholderText }) => {
    const query = useSearchParams();
    const handlePushQuery = useHandlePushQuery();
    const searchKeyWord = query.get("search") || "";

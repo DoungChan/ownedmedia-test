@@ -2,21 +2,26 @@
 import { Facebook, Twitter } from "lucide-react";
 import React from "react";
 import { handleOpenLink } from "@/utils/handleOpenLink";
-
+import { useParams } from "next/navigation";
 const Footer = () => {
+   const { lang } = useParams();
    return (
       <footer className="bg-primary  p-2 md:px-32  pt-10 min-h-60">
          <div className="flex flex-col md:flex-row justify-between gap-10 ">
-            <div className="flex flex-col gap-10 justify-between">
+            <div className="flex flex-col gap-14 justify-between">
                <div>
                   <h1 className="text-2xl text-white">Teccadoor</h1>
                   <p className="text-white">
-                     日本人のための知られざる技術情報への扉開発者。
+                     {lang === "en"
+                        ? "  © 2024 - Teccadoor Powered by Kirirom Digital."
+                        : " 日本人のための知られざる技術情報への扉開発者。"}
                   </p>
                </div>
                <div>
                   <p className="text-white ">
-                     © 2024 - Teccadoor 搭載 Kirirom Digital.
+                     {lang === "en"
+                        ? "  © 2024 - Teccadoor Powered by Kirirom Digital."
+                        : "  © 2024 - Teccadoor 搭載 Kirirom Digital."}
                   </p>
                   <div className="flex gap-4 mt-2">
                      <Facebook
@@ -42,7 +47,7 @@ const Footer = () => {
                         target="_blank"
                         className="text-white font-semibold hover:underline no-underline"
                      >
-                        会社
+                        {lang === "en" ? "Company" : "ホーム"}
                      </a>
                   </h6>
                   <h6 className="text-white">
@@ -51,16 +56,16 @@ const Footer = () => {
                         target="_blank"
                         className="text-white font-semibold hover:underline no-underline"
                      >
-                        会社情報
+                        {lang === "en" ? "About us" : "会社情報"}
                      </a>
                   </h6>
                   <h6 className="text-white">
                      <a
-                        href="https://www.kirirom-digital.com/"
+                        href="https://www.kirirom-digital.com/recruitment"
                         target="_blank"
                         className="text-white font-semibold hover:underline no-underline"
                      >
-                        キャリア
+                        {lang === "en" ? "Careers" : "採用情報"}
                      </a>
                   </h6>
                </div>

@@ -1,33 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { fecthContent } from "@/service/action";
-import { useHandlePushQuery } from "@/hooks/handlePushQuery";
-
+import { motion } from "framer-motion";
 const Tag = () => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(false);
    const [limit, setLimit] = useState(5);
-   const { lang, website } = useParams();
-   const [loadMore, setLoadMore] = useState(true);
-   const pushQuery = useHandlePushQuery();
-   const query = useSearchParams();
-   const tag = query.get("tag");
+   const { website } = useParams();
+   const router = useRouter();
    const fetchTag = async () => {
       setLoading(true);
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/media/tag?media=${website}&limit=${limit}&offset=0`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/media/tag?media=all&limit=${limit}&offset=0`;
       const data = await fecthContent(url);
       setData(data);
       setLoading(false);
    };
-   const handleClickTag = (tag) => {
-      pushQuery("tag", tag);
-   };
 
    useEffect(() => {
       fetchTag();
-      console.log(tag, "tag");
    }, [limit]);
+
+   const handleClickTag = (tag) => {
+      router.replace(`${tag}`);
+   };
 
    return (
       <div
@@ -41,27 +37,56 @@ const Tag = () => {
                     sm:min-w-36 min-w-20
                    pl-2"
          >
-            {data?.tags.map((item, index) => (
+            {loading ? (
                <>
-                  {" "}
-                  <button
-                     key={index}
-                     className={` text-primary text-sm py-0 px-4 text-start rounded-full line-clamp-1 ${
-                        tag === item.name ? "underline duration-500" : ""
-                     } `}
-                     onClick={() => handleClickTag(item.name)}
-                  >
-                     #{item.value_en}
-                  </button>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                     <button
+                        key={index}
+                        className="text-black text-sm py-0 px-4 bg-secondary rounded-full  w-28 h-4  animate-pulse"
+                     ></button>
+                  ))}
                </>
-            ))}
-            {loading &&
-               Array.from({ length: 5 }).map((_, index) => (
-                  <button
-                     key={index}
-                     className="text-black text-sm py-0 px-4 bg-secondary rounded-full  w-28 h-4  animate-pulse"
-                  ></button>
-               ))}
+            ) : (
+               <>
+                  <div className="flex flex-col">
+                     <button
+                        className={` text-primary text-sm py-0 px-4 text-start rounded-full line-clamp-1 `}
+                        onClick={() => handleClickTag("all")}
+                     >
+                        All
+                     </button>
+                     {website === "all" && (
+                        <motion.div
+                           initial={{ width: 0 }}
+                           animate={{ width: "100%" }}
+                           transition={{ duration: 0.1 }}
+                           className="bg-primary h-1 rounded-full duration-500"
+                        ></motion.div>
+                     )}
+                  </div>{" "}
+                  {data?.tags
+                     .filter((item) => item.name !== "all")
+                     .map((item, index) => (
+                        <div key={index} className="flex flex-col">
+                           {" "}
+                           <button
+                              className={` text-primary text-sm py-0 px-4 text-start rounded-full line-clamp-1  `}
+                              onClick={() => handleClickTag(item.name)}
+                           >
+                              {item.value_en}
+                           </button>
+                           {website === item.name && (
+                              <motion.div
+                                 initial={{ width: 0 }}
+                                 animate={{ width: "100%" }}
+                                 transition={{ duration: 0.1 }}
+                                 className="bg-primary h-1 rounded-full duration-500"
+                              ></motion.div>
+                           )}
+                        </div>
+                     ))}
+               </>
+            )}
          </div>
       </div>
    );

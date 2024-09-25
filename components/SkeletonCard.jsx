@@ -6,7 +6,7 @@ const SkeletonCard = () => {
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="w-[400px] md:w-[600px] h-full flex-1"
+         className="min-w-[350px] sm:min-w-[600px] max-w-[600px] h-full flex-1"
       >
          <div
             className="p-2 flex justify-between items-center gap-4            
@@ -19,7 +19,7 @@ const SkeletonCard = () => {
                <div className="flex items-center justify-center gap-2 w-fit h-fit">
                   <div className="articleCover size-12 rounded-full bg-gray-300"></div>
                   <div className="flex flex-col gap-2">
-                     <div className="h-4 bg-gray-300 rounded w-56 md:w-96"></div>
+                     <div className="h-4 bg-gray-300 rounded w-64 md:w-96"></div>
                      <div className="h-4 bg-gray-300 rounded w-16"></div>
                   </div>
                </div>
@@ -38,9 +38,6 @@ const SkeletonCard = () => {
                      <div className="text-xs text-white p-2 bg-gray-300 rounded-lg w-32 h-2"></div>
                   </div>
                </div>
-            </div>
-            <div>
-               <div className="object-cover min-w-24 min-h-24 size-24 rounded-xl bg-gray-300"></div>
             </div>
          </div>
       </div>

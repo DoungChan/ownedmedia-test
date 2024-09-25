@@ -13,7 +13,7 @@ import {
 import { PAGINATION_ITEMS_PER_PAGE } from "@/config/ui";
 import { useParams, useSearchParams } from "next/navigation";
 import { fecthContent } from "@/service/action";
-const BodyCard = ({ search }) => {
+const BodyCard = () => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(false);
    const { lang } = useParams();
@@ -33,9 +33,9 @@ const BodyCard = ({ search }) => {
    const res = async () => {
       setLoading(true);
 
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/media?media=${
-         search ? "all" : website
-      }&limit=${limit}&offset=0&sort_order=asc${tag ? `&tag=${tag}` : ""}${
+      const url = `${
+         process.env.NEXT_PUBLIC_API_URL
+      }/media?media=all&limit=${limit}&offset=0&sort_order=asc&tag=${website}${
          searchKeyWord ? `&q=${searchKeyWord}` : ""
       }`;
       const data = await fecthContent(url);
@@ -59,16 +59,23 @@ const BodyCard = ({ search }) => {
          url: url,
          content: summarize,
       });
-      console.log(contentUrl, "contentUrl");
 
       setOpenDialog(true);
    };
 
    return (
-      <>
+      <div className="mt-36 px-2">
+         {data?.total_count > 0 && (
+            <div>
+               <h5 className="text-primary">
+                  Total articals: {data?.total_count}
+               </h5>
+            </div>
+         )}
+
          <div
             id="body-content"
-            className=" flex flex-wrap justify-center gap-4  py-4 mt-28  min-h-[calc(100vh-12rem)]"
+            className=" flex items-start flex-wrap justify-start gap-4  py-4 mt-4  min-h-[calc(100vh-12rem)]"
          >
             {data &&
                data.medias.map((item, index) => (
@@ -92,12 +99,12 @@ const BodyCard = ({ search }) => {
                </div>
             )}
          </div>
-         {loadMore && (
+         {loadMore ? (
             <div
                className={`flex items-center justify-center w-full py-4 ${
                   loading || !data ? "hidden" : ""
                }`}
-               onClick={() => setLimit(limit + PAGINATION_ITEMS_PER_PAGE)}
+               onClick={() => setLimit(limit + 10)}
             >
                {/* <Pagination totalItems={data?.total_items ?? data?.total_content} /> */}
                <h6
@@ -107,6 +114,14 @@ const BodyCard = ({ search }) => {
             text-white hover:text-primary "
                >
                   {lang === "en" ? "Load more" : "もっと読む"}
+               </h6>
+            </div>
+         ) : (
+            <div className="flex items-center justify-center w-full py-4">
+               <h6 className="text-primary ">
+                  {lang === "en"
+                     ? "No more content"
+                     : "コンテンツがもうありません"}
                </h6>
             </div>
          )}
@@ -132,7 +147,7 @@ const BodyCard = ({ search }) => {
                </DialogDescription>
             </DialogContent>
          </Dialog>
-      </>
+      </div>
    );
 };
 

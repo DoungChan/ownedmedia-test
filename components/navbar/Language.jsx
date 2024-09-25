@@ -8,7 +8,7 @@ import {
    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
-import { AlignJustify, LanguagesIcon, Search, Tags, X } from "lucide-react";
+import { LanguagesIcon, Search, Tags, X } from "lucide-react";
 import {
    Sheet,
    SheetContent,
@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { fecthContent } from "@/service/action";
-import useDebounce from "@/hooks/useDebouce";
 import { debounce } from "lodash";
 const Language = ({ className }) => {
    const router = useRouter();
@@ -29,7 +28,6 @@ const Language = ({ className }) => {
    const inputRef = useRef(null);
 
    const [data, setData] = useState(null);
-   // const debouncedSearch = useDebounce(input, 300);
    const [loading, setLoading] = useState(false);
    const [openSheet, setOpenSheet] = useState(false);
    const handleClick = (newLang) => () => {
@@ -163,10 +161,7 @@ const Language = ({ className }) => {
                                                    handleClickTag(item.name)
                                                 }
                                              >
-                                                #
-                                                {lang === "en"
-                                                   ? item.value_en
-                                                   : item.value_ja}
+                                                #{item.value_en}
                                              </button>
                                           ))
                                        )}

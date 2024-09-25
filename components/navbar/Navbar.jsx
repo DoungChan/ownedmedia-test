@@ -1,30 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import InputSearch from "../Input";
 import Logo from "./Logo";
 import Language from "./Language"; // Assuming you have this component
 import { useParams } from "next/navigation";
-import WebsiteButton from "../WebsiteButton";
-import { fecthContent } from "@/service/action";
 import Tag from "../Tag";
 
 const Navbar = () => {
    const { lang, website } = useParams();
-   const [websites, setWebsites] = useState([]);
-
-   const res = async () => {
-      const data = await fecthContent(
-         `${process.env.NEXT_PUBLIC_API_URL}/website`
-      );
-      setWebsites(data.website);
-   };
-
-   useEffect(() => {
-      res();
-   }, []);
 
    return (
-      <nav className="fixed top-0 w-screen z-20">
+      <nav className="fixed top-0 w-screen z-20 shadow-sm">
          <div className="flex flex-col md:flex-row justify-between items-start md:px-32 p-2 w-full text-white bg-white">
             <Logo
                logoText={lang === "en" ? "Owned Media" : "オウンドメディア"}
