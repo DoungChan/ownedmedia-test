@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Tag = () => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(false);
-   const [limit, setLimit] = useState(5);
+   const [limit, setLimit] = useState(10);
    const { website } = useParams();
    const router = useRouter();
    const fetchTag = async () => {
@@ -29,13 +29,13 @@ const Tag = () => {
       <div
          className="flex gap-4 md:py-2
                   min-w-28  
-                  
+
                     "
       >
          <div
-            className="flex  justify-start items-start gap-3
-                    sm:min-w-36 min-w-20
-                   pl-2"
+            className="flex justify-start items-start gap-0
+                    sm:min-w-36 min-w-20 max-w-[90%] overflow-auto
+                   m-auto scrollbar-hide "
          >
             {loading ? (
                <>
@@ -50,7 +50,9 @@ const Tag = () => {
                <>
                   <div className="flex flex-col">
                      <button
-                        className={` text-primary text-sm py-0 px-4 text-start rounded-full line-clamp-1 `}
+                        className={` text-sm py-0 px-4 text-start rounded-full  ${
+                           website === "all" ? " text-blue-500" : "text-primary"
+                        } `}
                         onClick={() => handleClickTag("all")}
                      >
                         All
@@ -60,7 +62,7 @@ const Tag = () => {
                            initial={{ width: 0 }}
                            animate={{ width: "100%" }}
                            transition={{ duration: 0.1 }}
-                           className="bg-primary h-1 rounded-full duration-500"
+                           className="bg-blue-500 h-1 rounded-full duration-500"
                         ></motion.div>
                      )}
                   </div>{" "}
@@ -70,7 +72,11 @@ const Tag = () => {
                         <div key={index} className="flex flex-col">
                            {" "}
                            <button
-                              className={` text-primary text-sm py-0 px-4 text-start rounded-full line-clamp-1  `}
+                              className={` text-sm py-0 px-4 text-start rounded-full text-nowrap ${
+                                 website === item.name
+                                    ? " text-blue-500"
+                                    : "text-primary"
+                              } `}
                               onClick={() => handleClickTag(item.name)}
                            >
                               {item.value_en}
@@ -80,7 +86,7 @@ const Tag = () => {
                                  initial={{ width: 0 }}
                                  animate={{ width: "100%" }}
                                  transition={{ duration: 0.1 }}
-                                 className="bg-primary h-1 rounded-full duration-500"
+                                 className="bg-blue-500 h-1 rounded-full duration-500"
                               ></motion.div>
                            )}
                         </div>

@@ -10,8 +10,8 @@ const Navbar = () => {
    const { lang, website } = useParams();
 
    return (
-      <nav className="fixed top-0 w-screen z-20 shadow-sm">
-         <div className="flex flex-col md:flex-row justify-between items-start md:px-32 p-2 w-full text-white bg-white">
+      <nav className="fixed bg-white top-0 w-screen z-20 shadow-sm">
+         <div className="flex flex-col md:flex-row justify-between items-start md:px-32 p-2 w-full text-white">
             <Logo
                logoText={lang === "en" ? "Owned Media" : "オウンドメディア"}
                lang={lang}
@@ -36,15 +36,18 @@ const Navbar = () => {
                      placeholderText={lang === "en" ? "search" : "検索"}
                   />
                </div>
-               <div className="hidden sm:flex flex-wrap justify-center gap-5 py-4 w-full ">
+               {/* <div className="hidden sm:flex flex-wrap justify-center gap-5 py-4 w-full ">
                   <Tag />
-               </div>
+               </div> */}
             </div>
 
             <Language
                langText={lang === "en" ? "Japanese" : "英語"}
                className="hidden md:block"
             />
+         </div>
+         <div className="flex flex-wrap justify-center gap-5 py-4 w-full md:-mt-6 ">
+            <Tag />
          </div>
       </nav>
    );

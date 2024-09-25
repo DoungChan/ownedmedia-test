@@ -75,11 +75,13 @@ const BodyCard = () => {
 
          <div
             id="body-content"
-            className=" flex items-start flex-wrap justify-start gap-4  py-4 mt-4  min-h-[calc(100vh-12rem)]"
+            className=" flex items-stretch flex-wrap justify-start gap-4  py-4 mt-4  min-h-[calc(100vh-12rem)]"
          >
             {data &&
                data.medias.map((item, index) => (
-                  <Card key={index} data={item} summary={handleSummary} />
+                  <div key={index} className="flex items-stretch">
+                     <Card data={item} summary={handleSummary} />
+                  </div>
                ))}
             {loading &&
                Array.from({ length: PAGINATION_ITEMS_PER_PAGE }).map(
@@ -90,7 +92,7 @@ const BodyCard = () => {
                   )
                )}
             {data?.medias.length === 0 && (
-               <div className="flex items-center justify-center w-full  min-w-[668px]  h-96 m-auto">
+               <div className="flex items-center justify-center w-screen h-96 m-auto">
                   <h6 className="text-primary ">
                      {lang === "en"
                         ? "No content found"
@@ -99,31 +101,36 @@ const BodyCard = () => {
                </div>
             )}
          </div>
-         {loadMore ? (
-            <div
-               className={`flex items-center justify-center w-full py-4 ${
-                  loading || !data ? "hidden" : ""
-               }`}
-               onClick={() => setLimit(limit + 10)}
-            >
-               {/* <Pagination totalItems={data?.total_items ?? data?.total_content} /> */}
-               <h6
-                  className="px-6 py-2 cursor-pointer
+         {data?.total_count > 0 && (
+            <>
+               {" "}
+               {loadMore ? (
+                  <div
+                     className={`flex items-center justify-center w-full py-4 ${
+                        loading || !data ? "hidden" : ""
+                     }`}
+                     onClick={() => setLimit(limit + 10)}
+                  >
+                     {/* <Pagination totalItems={data?.total_items ?? data?.total_content} /> */}
+                     <h6
+                        className="px-6 py-2 cursor-pointer
             bg-primary hover:bg-transparent border border-primary duration-300
             rounded-full 
             text-white hover:text-primary "
-               >
-                  {lang === "en" ? "Load more" : "もっと読む"}
-               </h6>
-            </div>
-         ) : (
-            <div className="flex items-center justify-center w-full py-4">
-               <h6 className="text-primary ">
-                  {lang === "en"
-                     ? "No more content"
-                     : "コンテンツがもうありません"}
-               </h6>
-            </div>
+                     >
+                        {lang === "en" ? "Load more" : "もっと読む"}
+                     </h6>
+                  </div>
+               ) : (
+                  <div className="flex items-center justify-center py-4">
+                     <h6 className="text-primary ">
+                        {lang === "en"
+                           ? "No more content"
+                           : "コンテンツがもうありません"}
+                     </h6>
+                  </div>
+               )}
+            </>
          )}
 
          <Dialog
@@ -133,8 +140,8 @@ const BodyCard = () => {
             <DialogContent className="sm:min-w-[60%] min-w-[90%]">
                <DialogHeader>
                   <DialogTitle>
-                     <div className="w-[70%] ">
-                        <h1 className="text-primary text-xl font-semibold">
+                     <div className="w-[90%] ">
+                        <h1 className="text-primary text-start text-xl font-semibold">
                            {contentUrl ? contentUrl.title : "Summary"}
                         </h1>
                      </div>
