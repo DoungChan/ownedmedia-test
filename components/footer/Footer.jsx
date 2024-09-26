@@ -12,16 +12,13 @@ const Footer = () => {
                <div>
                   <h1 className="text-2xl text-white">Teccadoor</h1>
                   <p className="text-white">
-                     {lang === "en"
-                        ? " A door to undiscovered technical information for Japanese developers."
-                        : " 日本人のための知られざる技術情報への扉開発者。"}
+                     A door to undiscovered technical information for Japanese
+                     developers.
                   </p>
                </div>
                <div>
                   <p className="text-white ">
-                     {lang === "en"
-                        ? "  © 2024 - Teccadoor Powered by Kirirom Digital."
-                        : "  © 2024 - Teccadoor 搭載 Kirirom Digital."}
+                     © 2024 - Teccadoor Powered by Kirirom Digital.
                   </p>
                   <div className="flex gap-4 mt-2">
                      <Facebook
@@ -47,7 +44,7 @@ const Footer = () => {
                         target="_blank"
                         className="text-white font-semibold hover:underline no-underline"
                      >
-                        {lang === "en" ? "Company" : "ホーム"}
+                        Company
                      </a>
                   </h6>
                   <h6 className="text-white">
@@ -56,7 +53,7 @@ const Footer = () => {
                         target="_blank"
                         className="text-white font-semibold hover:underline no-underline"
                      >
-                        {lang === "en" ? "About us" : "会社情報"}
+                        About us
                      </a>
                   </h6>
                   <h6 className="text-white">
@@ -65,7 +62,7 @@ const Footer = () => {
                         target="_blank"
                         className="text-white font-semibold hover:underline no-underline"
                      >
-                        {lang === "en" ? "Careers" : "採用情報"}
+                        Careers
                      </a>
                   </h6>
                </div>

@@ -21,7 +21,7 @@ const Card = ({ summary, data }) => {
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="h-full flex-1 justify-start items-start  min-w-[200px] max-w-[600px] "
+         className="h-full flex-1 justify-start items-start  min-w-[200px] max-w-[600px]  "
          onClick={() =>
             handleClick(
                lang === "en" ? data?.summary_en : data?.summary_ja,
@@ -33,7 +33,7 @@ const Card = ({ summary, data }) => {
          <div
             className="p-2 flex justify-between items-center gap-2
           rounded-lg border border-transparent  
-          transition-colors hover:bg-slate-100  shadow-md h-full 
+          transition-colors hover:bg-slate-100  shadow-md h-full max-h-64  
           cursor-pointer
           "
          >

@@ -35,7 +35,7 @@ const BodyCard = () => {
 
       const url = `${
          process.env.NEXT_PUBLIC_API_URL
-      }/media?media=all&limit=${limit}&offset=0&sort_order=asc&tag=${website}${
+      }/media?media=all&limit=${limit}&offset=0&tag=${website}${
          searchKeyWord ? `&q=${searchKeyWord}` : ""
       }`;
       const data = await fecthContent(url);
