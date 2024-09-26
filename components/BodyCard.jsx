@@ -85,7 +85,7 @@ const BodyCard = () => {
                ))}
             {loading &&
                Array.from({ length: 6 }).map((_, index) => (
-                  <div className="flex" key={index}>
+                  <div className="flex items-stretch flex-wrap" key={index}>
                      <SkeletonCard />
                   </div>
                ))}

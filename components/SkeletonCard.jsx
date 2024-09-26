@@ -6,26 +6,27 @@ const SkeletonCard = () => {
          initial={{ opacity: 0, y: 100 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.3 }}
-         className="min-w-[350px] sm:min-w-[600px] max-w-[600px] h-full flex-1"
+         className="h-full w-full justify-start items-start max-w-[600px] "
       >
          <div
             className="p-2 flex justify-between items-center gap-4            
                         rounded-lg border border-transparent  
-                        transition-colors border-gray-50 shadow-sm h-full
+                        transition-colors border-gray-50 shadow-md h-full
+                        w-full
                         cursor-pointer
                      "
          >
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
                <div className="flex items-center justify-center gap-2 w-fit h-fit">
                   <div className="articleCover size-12 rounded-full bg-gray-300"></div>
                   <div className="flex flex-col gap-2">
-                     <div className="h-4 bg-gray-300 rounded w-64 md:w-96"></div>
+                     <div className="h-4 bg-gray-300 rounded w-[80%] "></div>
                      <div className="h-4 bg-gray-300 rounded w-16"></div>
                   </div>
                </div>
                <div className="flex flex-col justify-between gap-2 mt-2">
-                  <div className="h-6 bg-gray-300 rounded w-48 md:w-96"></div>
-                  <div className="h-4 bg-gray-300 rounded w-full mt-2 mb-1"></div>
+                  <div className="h-6 bg-gray-300 rounded w-[80%] "></div>
+                  <div className="h-4 bg-gray-300 rounded w-[80%] mt-2 mb-1"></div>
                   <div className="flex gap-2">
                      {[...Array(3)].map((_, index) => (
                         <div
