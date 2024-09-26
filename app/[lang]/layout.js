@@ -14,6 +14,17 @@ export default function RootLayout({ params: { lang, website }, children }) {
       <html lang="ja">
          <head>
             <link rel="icon" href="/logo1.png" />
+            <meta
+               property="og:image"
+               content="teccadoor.kirirom-digital.com/taccadoor.jpg"
+            />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta name="viewport" content="width=device-width" />
+            <meta
+               name="viewport"
+               content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+            />
          </head>
 
          <body className={inter.className}>
