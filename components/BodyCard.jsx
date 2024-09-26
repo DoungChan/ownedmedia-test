@@ -75,7 +75,7 @@ const BodyCard = () => {
 
          <div
             id="body-content"
-            className=" grid grid-cols-1 lg:grid-cols-2  gap-4 py-4 mt-4  min-h-[calc(100vh-12rem)]"
+            className=" grid grid-cols-1 lg:grid-cols-2  gap-4 py-4 mt-4  min-h-[calc(100vh-25rem)]"
          >
             {data &&
                data.medias.map((item, index) => (
@@ -84,15 +84,13 @@ const BodyCard = () => {
                   </div>
                ))}
             {loading &&
-               Array.from({ length: PAGINATION_ITEMS_PER_PAGE }).map(
-                  (_, index) => (
-                     <div className="flex" key={index}>
-                        <SkeletonCard />
-                     </div>
-                  )
-               )}
+               Array.from({ length: 6 }).map((_, index) => (
+                  <div className="flex" key={index}>
+                     <SkeletonCard />
+                  </div>
+               ))}
             {data?.medias.length === 0 && (
-               <div className="flex items-center justify-center w-screen h-96 m-auto">
+               <div className=" flex justify-center col-span-2 ">
                   <h6 className="text-primary ">
                      {lang === "en"
                         ? "No content found"

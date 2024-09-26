@@ -11,7 +11,7 @@ const SkeletonCard = () => {
          <div
             className="p-2 flex justify-between items-center gap-4            
                         rounded-lg border border-transparent  
-                        transition-colors hover:bg-slate-100 border-gray-50 shadow-sm h-full
+                        transition-colors border-gray-50 shadow-sm h-full
                         cursor-pointer
                      "
          >

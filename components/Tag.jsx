@@ -7,6 +7,7 @@ const Tag = () => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(false);
    const [limit, setLimit] = useState(10);
+   const [activeTag, setActiveTag] = useState(null);
    const { website } = useParams();
    const router = useRouter();
    const fetchTag = async () => {
@@ -19,9 +20,11 @@ const Tag = () => {
 
    useEffect(() => {
       fetchTag();
+      setActiveTag(website);
    }, [limit]);
 
    const handleClickTag = (tag) => {
+      setActiveTag(tag);
       router.replace(`${tag}`);
    };
 
@@ -51,13 +54,15 @@ const Tag = () => {
                   <div className="flex flex-col">
                      <button
                         className={` text-sm py-0 px-4 text-start rounded-full  ${
-                           website === "all" ? " text-blue-500" : "text-primary"
+                           activeTag === "all"
+                              ? " text-blue-500"
+                              : "text-primary"
                         } `}
                         onClick={() => handleClickTag("all")}
                      >
                         All
                      </button>
-                     {website === "all" && (
+                     {activeTag === "all" && (
                         <motion.div
                            initial={{ width: 0 }}
                            animate={{ width: "100%" }}
@@ -73,7 +78,7 @@ const Tag = () => {
                            {" "}
                            <button
                               className={` text-sm py-0 px-4 text-start rounded-full text-nowrap ${
-                                 website === item.name
+                                 activeTag === item.name
                                     ? " text-blue-500"
                                     : "text-primary"
                               } `}
@@ -81,7 +86,7 @@ const Tag = () => {
                            >
                               {item.value_en}
                            </button>
-                           {website === item.name && (
+                           {activeTag === item.name && (
                               <motion.div
                                  initial={{ width: 0 }}
                                  animate={{ width: "100%" }}
