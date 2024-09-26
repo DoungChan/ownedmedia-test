@@ -16,7 +16,7 @@ export default function RootLayout({ params: { lang, website }, children }) {
             <link rel="icon" href="/logo1.png" />
             <meta
                property="og:image"
-               content="teccadoor.kirirom-digital.com/taccadoor.jpg"
+               content="https://teccadoor.kirirom-digital.com/teccadoor.jpg"
             />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
