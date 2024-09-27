@@ -19,8 +19,8 @@ const Logo = ({ lang, className }) => {
          <Image
             src="/logo2.png"
             alt="logo"
-            height={180}
-            width={180}
+            height={190}
+            width={190}
             className="-my-10 hidden md:block"
          />
       </div>

@@ -41,11 +41,7 @@ const Card = ({ summary, data }) => {
                <div className="flex items-center justify-center gap-2 w-fit -my-4 h-fit">
                   <img
                      className="articleCover size-12 rounded-full object-cover"
-                     src={
-                        data?.media !== "dev_to"
-                           ? data?.image
-                           : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                     }
+                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                      alt="author profile"
                   />
                   <div className="flex flex-col gap-2">
@@ -85,6 +81,19 @@ const Card = ({ summary, data }) => {
                   </div>
                </div>
             </div>
+            {data.media !== "dev_to" && (
+               <div className="max-w-[30%] flex justify-end items-end ">
+                  <img
+                     src={
+                        data?.media !== "dev_to"
+                           ? data?.image
+                           : "/teccadoor.jpg"
+                     }
+                     alt=""
+                     className="object-cover min-w-20 min-h-20  md:min-w-28 md:min-h-2min-w-28 size-20 rounded-xl"
+                  />
+               </div>
+            )}
          </div>
       </motion.div>
    );
