@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const Logo = ({ lang, className }) => {
    const router = useRouter();
    return (
@@ -8,11 +9,19 @@ const Logo = ({ lang, className }) => {
          className={` cursor-pointer ${className}`}
          onClick={() => router.push(`/${lang}`)}
       >
-         <img src="/logo1.png" alt="logo" className="size-14 -my-2 md:hidden" />
-         <img
-            src="/logo.png"
+         <Image
+            src="/logo1.png"
             alt="logo"
-            className="min-w-32 max-w-40 -my-10  hidden md:block"
+            width={56}
+            height={56}
+            className="size-14 -my-2 md:hidden"
+         />
+         <Image
+            src="/logo2.png"
+            alt="logo"
+            height={180}
+            width={180}
+            className="-my-10 hidden md:block"
          />
       </div>
    );

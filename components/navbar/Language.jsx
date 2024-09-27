@@ -91,10 +91,10 @@ const Language = ({ className }) => {
                </DropdownMenu>
             </div>
 
-            {/* <div>
+            <div>
                <Sheet open={openSheet} onOpenChange={setOpenSheet}>
                   <SheetTrigger className="">
-                     <div className="p-2.5 border rounded-lg sm:hidden">
+                     <div className="p-2.5 border rounded-lg ">
                         <Tags className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all text-black bg-transparent" />
                         <span className="sr-only">Toggle Tags</span>
                      </div>
@@ -173,7 +173,7 @@ const Language = ({ className }) => {
                      </SheetHeader>
                   </SheetContent>
                </Sheet>
-            </div> */}
+            </div>
          </div>
       </div>
    );
