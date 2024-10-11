@@ -27,7 +27,7 @@ const AllTag = ({ className }) => {
          setLoading(true);
          const url = `${
             process.env.NEXT_PUBLIC_API_URL
-         }/media/tag?media=${website}&limit=${116}&offset=0&q=${input}`;
+         }/media/tag?media=all&limit=${116}&offset=0&q=${input}`;
          const data = await fecthContent(url);
          setData(data);
          setLoading(false);
@@ -45,9 +45,10 @@ const AllTag = ({ className }) => {
          inputRef.current.value = "";
       }
    };
+
    const handleClickTag = (tag) => {
-      router.push(`/${lang}/${website}?tag=${tag}`);
       setOpenSheet(false);
+      router.replace(`${tag}`);
    };
 
    // Debounce the search function to prevent many requests

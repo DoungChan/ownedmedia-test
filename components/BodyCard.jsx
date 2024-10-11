@@ -28,7 +28,6 @@ const BodyCard = () => {
    const [loadMore, setLoadMore] = useState(true);
    const query = useSearchParams();
    const searchKeyWord = query.get("search");
-   const tag = query.get("tag");
    // fetch data
    const res = async () => {
       setLoading(true);
@@ -50,7 +49,7 @@ const BodyCard = () => {
    // fetch data on first load
    useEffect(() => {
       res();
-   }, [limit, searchKeyWord, tag]);
+   }, [limit, searchKeyWord, website]);
 
    // handle summary
    const handleSummary = (summarize, title, url) => {
