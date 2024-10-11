@@ -63,7 +63,7 @@ const AllTag = ({ className }) => {
          <div>
             <Sheet open={openSheet} onOpenChange={setOpenSheet}>
                <SheetTrigger className="">
-                  <div className="text-primary text-xs px-4 ">
+                  <div className="text-primary text-xs px-4 text-nowrap ">
                      {lang === "ja" ? "全て見る" : "See All"}
                   </div>
                </SheetTrigger>

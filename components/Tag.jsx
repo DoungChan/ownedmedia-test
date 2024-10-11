@@ -34,8 +34,8 @@ const Tag = () => {
 
    return (
       <div
-         className="flex justify-center items-start gap-1
-                 w-full sm:w-[60%]  max-w-[90%] overflow-auto
+         className="flex justify-center items-start gap-0
+                     sm:w-[70%] mx-4 pl-32 sm:pl-0 overflow-auto
                    m-auto scrollbar-hide "
       >
          {loading ? (
@@ -77,7 +77,6 @@ const Tag = () => {
                   .slice(0, 5)
                   .map((item, index) => (
                      <div key={index} className="flex flex-col">
-                        {" "}
                         <button
                            className={` text-sm py-0 px-4 text-start rounded-full text-nowrap ${
                               activeTag === item.name
@@ -100,7 +99,6 @@ const Tag = () => {
                   ))}
                {data?.tags.length > 5 && (
                   <>
-                     {" "}
                      <div>|</div>
                      <div className="flex flex-col">
                         <AllTag />
