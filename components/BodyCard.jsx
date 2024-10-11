@@ -40,9 +40,10 @@ const BodyCard = () => {
       const data = await fecthContent(url);
       setData(data);
       setLoading(false);
-
       if (data?.total_count <= data?.medias.length) {
          setLoadMore(false);
+      } else {
+         setLoadMore(true);
       }
    };
 
