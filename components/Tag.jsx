@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { fecthContent } from "@/service/action";
 import { motion } from "framer-motion";
@@ -22,9 +22,11 @@ const Tag = () => {
 
    useEffect(() => {
       fetchTag();
-      setActiveTag(website);
-   }, [limit]);
+   }, []);
 
+   useEffect(() => {
+      setActiveTag(website);
+   }, [website]);
    const handleClickTag = (tag) => {
       setActiveTag(tag);
       router.replace(`${tag}`);
