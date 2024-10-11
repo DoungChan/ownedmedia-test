@@ -8,7 +8,7 @@ import AllTag from "./AllTag";
 const Tag = () => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(false);
-   const [limit, setLimit] = useState(15);
+   const [limit, setLimit] = useState(10);
    const [activeTag, setActiveTag] = useState(null);
    const { website } = useParams();
    const router = useRouter();
@@ -33,17 +33,13 @@ const Tag = () => {
    };
 
    return (
-      <div
-         className="flex justify-center items-start gap-0
-                     sm:w-[70%] mx-4 pl-32 sm:pl-0 overflow-auto
-                   m-auto scrollbar-hide "
-      >
+      <div className="flex justify-start md:justify-center  gap-1 w-fit overflow-x-auto scrollbar-hide p-2">
          {loading ? (
             <>
                {Array.from({ length: 5 }).map((_, index) => (
                   <button
                      key={index}
-                     className="text-black text-sm py-0 px-4 bg-secondary rounded-full  w-28 h-4  animate-pulse"
+                     className="text-black text-sm py-0 px-4 bg-secondary rounded-full w-28 h-4 animate-pulse"
                   ></button>
                ))}
             </>
@@ -52,11 +48,11 @@ const Tag = () => {
                {data?.tags.length > 0 && (
                   <div className="flex flex-col">
                      <button
-                        className={` text-sm py-0 px-4 text-start rounded-full  ${
+                        className={`text-sm py-0 px-4 text-start rounded-full ${
                            activeTag === "all"
-                              ? " text-blue-500"
+                              ? "text-blue-500"
                               : "text-primary"
-                        } `}
+                        }`}
                         onClick={() => handleClickTag("all")}
                      >
                         All
@@ -74,15 +70,15 @@ const Tag = () => {
 
                {data?.tags
                   .filter((item) => item.name !== "all")
-                  .slice(0, 5)
+                  .slice(5) // Start from index 5 to the end
                   .map((item, index) => (
                      <div key={index} className="flex flex-col">
                         <button
-                           className={` text-sm py-0 px-4 text-start rounded-full text-nowrap ${
+                           className={`text-sm py-0 px-4 text-start rounded-full text-nowrap ${
                               activeTag === item.name
-                                 ? " text-blue-500"
+                                 ? "text-blue-500"
                                  : "text-primary"
-                           } `}
+                           }`}
                            onClick={() => handleClickTag(item.name)}
                         >
                            {item.value_en}
@@ -102,7 +98,7 @@ const Tag = () => {
                      <div>|</div>
                      <div className="flex flex-col">
                         <AllTag />
-                     </div>{" "}
+                     </div>
                   </>
                )}
             </>
